@@ -213,7 +213,7 @@ static FlexStyleMgr* _instance=nil;
         group = [[FlexStyleGroup alloc]init];
         
         NSBundle *bundle = [NSBundle mainBundle];
-        if (FlexGetLoadMethod == flexCustomLoad) {
+        if (FlexGetLoadMethod() == flexCustomLoad) {
             bundle = [NSBundle bundleWithPath:[FlexNode flexPath_xmlDoucument_bundlePath]];
         }
         
