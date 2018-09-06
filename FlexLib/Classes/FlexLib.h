@@ -27,4 +27,5 @@
 #import "FlexTextView.h"
 #import "FlexCollectionView.h"
 #import "FlexHttpVC.h"
+#import "FlexNode+Customer.h"
 
