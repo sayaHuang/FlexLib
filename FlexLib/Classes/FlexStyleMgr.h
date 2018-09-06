@@ -29,3 +29,14 @@
 +(instancetype)instance;
 
 @end
+
+@interface FlexStyleGroup : NSObject<NSCoding>
+{
+    NSMutableDictionary<NSString*,NSArray<FlexAttr*>*>* _stylesByName;
+}
+
+-(BOOL)loadFromFile:(NSString*)stylePath;
+
+-(NSArray*)getStyleByName:(NSString*)styleName;
+
+@end

@@ -35,17 +35,6 @@
 
 /////////////////////////////
 
-@interface FlexStyleGroup : NSObject<NSCoding>
-{
-    NSMutableDictionary<NSString*,NSArray<FlexAttr*>*>* _stylesByName;
-}
-
--(BOOL)loadFromFile:(NSString*)stylePath;
-
--(NSArray*)getStyleByName:(NSString*)styleName;
-
-@end
-
 @implementation FlexStyleGroup
 
 -(instancetype)init
@@ -223,7 +212,12 @@ static FlexStyleMgr* _instance=nil;
         
         group = [[FlexStyleGroup alloc]init];
         
-        NSString* filePath = [[NSBundle mainBundle]pathForResource:fileName ofType:@"style"];
+        NSBundle *bundle = [NSBundle mainBundle];
+        if (FlexGetLoadMethod == flexCustomLoad) {
+            bundle = [NSBundle bundleWithPath:[FlexNode flexPath_xmlDoucument_bundlePath]];
+        }
+        
+        NSString* filePath = [bundle pathForResource:fileName ofType:@"style"];
         if(filePath != nil){
             [group loadFromFile:filePath];
         }else{

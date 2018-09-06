@@ -18,6 +18,9 @@
 #import "FlexModalView.h"
 #import "ViewExt/UIView+Flex.h"
 
+static NSString* flexLibAddress = @"yinguFlexLibXmlName.data";
+static NSString* YingGuFlexLibPath = @"YingGuFlexLibPath";
+
 #define VIEWCLSNAME     @"viewClsName"
 #define NAME            @"name"
 #define ONPRESS         @"onPress"
@@ -938,5 +941,45 @@ float FlexGetScaleOffset(void)
 {
     return [NSBundle mainBundle];
 }
+@end
+
+@implementation FlexNode (CustomerAddress)
+
+
++ (NSString *)flexPath_xmlDoucumentPath
+{
+    NSString *unzipFilePath = [FlexNode filePath];
+    return [unzipFilePath stringByAppendingPathComponent:@"Resource"];
+}
+
++ (NSString *)flexPath_xmlDoucument_bundlePath{
+    NSString *xmlDoucumentPath = [FlexNode flexPath_xmlDoucumentPath];
+    return [xmlDoucumentPath stringByAppendingPathComponent:@"Resource.bundle"];;
+}
+
++ (NSString *)pathForFlexLibInfo
+{
+    NSString * fpath= [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *file=[fpath stringByAppendingPathComponent:flexLibAddress];
+    return file;
+}
+
++ (NSString *)filePath
+{
+    
+    NSString *path = [NSString stringWithFormat:@"%@/%@",
+                      NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0],
+                      YingGuFlexLibPath];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:nil]) {
+        
+        [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                  withIntermediateDirectories:NO
+                                                   attributes:nil
+                                                        error:nil];
+    }
+    return path;
+}
+
 @end
 

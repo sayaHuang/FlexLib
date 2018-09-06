@@ -118,3 +118,19 @@ void FlexSetCustomScale(FlexScaleFunc scaleFunc);
 -(NSBundle*)bundleForImages;
 
 @end
+
+@interface FlexNode (CustomerAddress)
+
+//YingGuFlexLibPath/Resource
++ (NSString *)flexPath_xmlDoucumentPath;
+
+//YingGuFlexLibPath/Resource/Resource.bundle
++ (NSString *)flexPath_xmlDoucument_bundlePath;
+
+//YingGuFlexLibPath/yinguFlexLibXmlName.data
++ (NSString *)pathForFlexLibInfo;
+
+//YingGuFlexLibPath
++ (NSString *)filePath;
+
+@end
