@@ -26,6 +26,8 @@
 
 -(NSArray<FlexAttr*>*)getStyleByRefPath:(NSString*)ref;
 
+- (void)clearStyle;
+
 +(instancetype)instance;
 
 @end

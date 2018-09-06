@@ -253,4 +253,10 @@ static FlexStyleMgr* _instance=nil;
     }
     return [NSArray array];
 }
+
+- (void)clearStyle
+{
+    _files = [NSMutableDictionary dictionary];
+}
+
 @end
