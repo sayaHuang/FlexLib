@@ -19,8 +19,13 @@
 
 FLEXSET(source)
 {
-    UIImage* img = [UIImage imageNamed:sValue inBundle:[owner bundleForImages] compatibleWithTraitCollection:nil];
-    self.image = img ;
+    NSBundle *bundle = [owner bundleForImages];
+    if (FlexGetLoadMethod() == flexCustomLoad) {
+        bundle = [NSBundle bundleWithPath:[FlexNode flexPath_xmlDoucument_bundlePath]];
+    }
+
+    UIImage* img = [UIImage imageNamed:sValue inBundle:bundle compatibleWithTraitCollection:nil];
+    self.image = img;
 }
 FLEXSET(highlightSource)
 {

@@ -32,6 +32,7 @@ static NSString* YingGuFlexLibPath = @"YingGuFlexLibPath";
 
 NSData* loadFromNetwork(NSString* resName);
 NSData* loadFromFile(NSString* resName);
+NSData* loadFromDocument(NSString* resName)
 CGFloat scaleLinear(CGFloat f,const char* attrName);
 
 // 全局变量
@@ -812,6 +813,16 @@ NSData* loadFromNetwork(NSString* resName)
     return flexData;
 }
 
+NSData* loadFromDocument(NSString* resName)
+{
+    NSString *path = [[FlexNode flexPath_xmlDoucumentPath] stringByAppendingPathComponent:resName];
+    
+    if(path==nil){
+        NSLog(@"Flexbox: resource %@ not found.",resName);
+        return nil;
+    }
+    return [NSData dataWithContentsOfFile:path];
+}
 
 void FlexSetFlexIndex(NSDictionary* resIndex)
 {
