@@ -38,6 +38,7 @@ void FlexSetLoadFunc(FlexLoadMethod loadFrom);
 // 设置自定义资源加载方式
 void FlexSetCustomLoadFunc(FlexLoadFunc func);
 FlexLoadMethod FlexGetLoadMethod(void);
+NSData* loadFromDocument(NSString* resName);
 
 // 恢复预览设置，仅在debug下生效
 void FlexRestorePreviewSetting(void);
