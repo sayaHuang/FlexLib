@@ -32,7 +32,7 @@ static NSString* YingGuFlexLibPath = @"YingGuFlexLibPath";
 
 NSData* loadFromNetwork(NSString* resName);
 NSData* loadFromFile(NSString* resName);
-NSData* loadFromDocument(NSString* resName)
+NSData* loadFromDocument(NSString* resName);
 CGFloat scaleLinear(CGFloat f,const char* attrName);
 
 // 全局变量
